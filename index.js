@@ -45,7 +45,7 @@ app.patch('/posts/:id', checkAuth, postCreateValidation, handleValidationErrors,
 const start = async () => {
     try {
         const PORT = process.env.PORT || 5001
-        await mongoose.connect('mongodb+srv://admin:admin@cluster0.hehrisc.mongodb.net/?retryWrites=true&w=majority')
+        await mongoose.connect(process.env.MONGODB_URI)
         app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
     } catch (e) {
         console.log(e)
